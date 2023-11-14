@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="all">
+    <div class="filter">
+      <mat-form-field class="search">
+        <mat-label>رقم الغرفة</mat-label>
+        <input matInput type="number" (keyup)="filterOption()" [(ngModel)]="room" placeholder="5" #input>
+      </mat-form-field>
+      <mat-form-field class="search">
+        <mat-label>اسم الدورة</mat-label>
+        <input matInput (keyup)="filterOption()" [(ngModel)]="search" placeholder="مثال: جامعة" #input>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>تاريخ البدء</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="start" (ngModelChange)="filterOption()">
+        <mat-hint>شهر/يوم/سنة</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>تاريخ الانتهاء</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="end" (ngModelChange)="filterOption()">
+        <mat-hint>شهر/يوم/سنة</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <div class="cycle-container">
+          <mat-card class="example-card" *ngFor="let elem of filterCycles">
+            <mat-card-header>
+              <mat-card-title>{{ elem.name }}</mat-card-title>
+              <mat-card-subtitle>___________</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                <mat-icon>date_range</mat-icon>
+                تاريخ البدء: {{ elem.startDate| myDate }}
+              </p>
+              <p>
+                <mat-icon>date_range</mat-icon>
+                تاريخ الانتهاء: {{ elem.endDate | myDate }}
+              </p>
+              <p style="word-break: break-all;">
+                <mat-icon>person</mat-icon>
+                المدربون: {{ elem.Formers | formerList }}
+              </p>
+              <p class="part">
+                <mat-icon>person</mat-icon>
+                عدد المشاركين: {{ elem.Participants.length }}
+              </p>
+              <p>
+                <mat-icon>room</mat-icon>
+                رقم الغرفة: {{ elem.roomNumber }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="warn" (click)="openUpdateDialog(elem)" *ngIf="show">تحديث</button>
+              <button mat-button color="accent" (click)="deleteCycle(elem.cycle_id)" *ngIf="show">حذف</button>
+              <button mat-button routerLink="/register_part" *ngIf="!show">تسجيل</button>
+              <button mat-button color="primary" (click)="selectCycle(elem)" *ngIf="show">تفاصيل</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <div class="col-lg" *ngIf="show">
+        <table class="table" *ngIf="showPart">
+          <thead>
+            <tr>
+              <th scope="col">الاسم الكامل</th>
+              <th scope="col">الهاتف الأرضي</th>
+              <th scope="col">الفاكس</th>
+              <th scope="col">الجوال</th>
+              <th scope="col">البريد الإلكتروني </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let elem of selectedCycle.Participants">
+              <td scope="col"> {{ elem.fullname }} </td>
+              <td scope="col"> {{ elem.landLine }} </td>
+              <td scope="col"> {{ elem.fax }} </td>
+              <td scope="col"> {{ elem.mobilePhone }} </td>
+              <td scope="col"> {{ elem.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

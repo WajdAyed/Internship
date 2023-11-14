@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card mat-elevation-z8">
+    <div class="card-image">
+      <img src="../../../assets/login_page.jpg" alt="جاري التحميل">
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage"> {{errorMessage}}</div>
+    <form class="card-form" [formGroup]="myForm" (ngSubmit)="login()">
+      <div class="input">
+        <input type="text" class="input-field" formControlName="username" required />
+        <label class="input-label">اسم المستخدم</label>
+      </div>
+      <div class="input">
+        <input type="password" class="input-field" formControlName="password" required />
+        <label class="input-label">كلمة المرور</label>
+      </div>
+      <div class="action">
+        <button mat-raised-button color="primary" id="submit-btn" class="action-button">تسجيل الدخول</button>
+      </div>
+    </form>
+  </div>
+</div>

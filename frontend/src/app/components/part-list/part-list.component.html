@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>قائمة المشاركين</h2>
+<mat-dialog-content>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">الاسم الكامل</th>
+        <th scope="col">الهاتف الأرضي</th>
+        <th scope="col">الفاكس</th>
+        <th scope="col">الهاتف المحمول</th>
+        <th scope="col">البريد الإلكتروني</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let elem of data.part">
+        <td scope="col"> {{ elem.fullname }} </td>
+        <td scope="col"> {{ elem.landLine }} </td>
+        <td scope="col"> {{ elem.fax }} </td>
+        <td scope="col"> {{ elem.mobilePhone }} </td>
+        <td scope="col"> {{ elem.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>

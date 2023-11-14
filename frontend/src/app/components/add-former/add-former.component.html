@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="center-content">
+    <h1>
+        إضافة مدرب
+    </h1>
+    <div class="alert alert-danger" *ngIf="errMessage">{{ errMessage }}</div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="inputs">
+        <mat-form-field appearance="fill">
+          <mat-label>الاسم الكامل</mat-label>
+          <input matInput type="text" formControlName="fullname" required>
+          <mat-error *ngIf="myForm.get('fullname')!.hasError('required')">الاسم الكامل مطلوب</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>التخصص</mat-label>
+          <input matInput formControlName="speciality" required>
+          <mat-error *ngIf="myForm.get('speciality')!.hasError('required')">التخصص مطلوب</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>الاتجاه</mat-label>
+          <input matInput type="text" formControlName="direction" required>
+          <mat-error *ngIf="myForm.get('direction')!.hasError('required')">الاتجاه مطلوب</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit">إرسال</button>
+        <button mat-raised-button color="warn" mat-dialog-close>إغلاق</button>
+      </div>
+    </form>
+  </div>
+</div>

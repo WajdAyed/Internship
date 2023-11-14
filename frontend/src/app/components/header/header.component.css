@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.custom-list-item {
+  font-weight: 500;
+}
+
+.custom-list-item:hover{
+  color: white;
+}
+
+mat-sidenav {
+  width: 270px;
+  background-color: #6699CC;
+  font-weight: 600;
+}

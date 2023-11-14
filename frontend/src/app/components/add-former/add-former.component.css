@@ -1,0 +1,30 @@
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center horizontally */
+  justify-content: center;
+  /* Center vertically */
+  height: 80vh;
+  text-align: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+mat-form-field {
+  max-width: 200px;
+  margin-right: 7px;
+}
+
+
+button {
+  margin-right: 5px;
+}
+
+.alert{
+    max-width: 500px;
+}

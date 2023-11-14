@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card">
+    <div class="card-image">
+      <img src="../../../assets/login_page.jpg" alt="جاري التحميل">
+    </div>
+    <form class="card-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="alert alert-danger" *ngIf="errMessage" style="text-align: center;"> {{ errMessage }}</div>
+      <div class="input">
+        <input type="text" class="input-field" formControlName="fullname" required />
+        <label class="input-label">الاسم الكامل</label>
+      </div>
+      <div class="input">
+        <input type="number" class="input-field" formControlName="mobilePhone" required />
+        <label class="input-label">رقم الهاتف الخلوي</label>
+      </div>
+      <div class="input">
+        <input type="email" class="input-field" formControlName="email" required />
+        <label class="input-label">البريد الإلكتروني</label>
+      </div>
+      <div class="input">
+        <input type="number" class="input-field" formControlName="landLine" required />
+        <label class="input-label">هاتف ارضي</label>
+      </div>
+      <div class="input">
+        <input type="number" class="input-field" formControlName="fax" required />
+        <label class="input-label">فاكس</label>
+      </div>
+      <div class="input">
+        <mat-form-field>
+          <mat-label>Cycle</mat-label>
+          <mat-select (selectionChange)="onDataSelected($event)">
+            <mat-option *ngFor="let cycle of cycles" [value]="cycle.cycle_id">
+              {{ cycle.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="action">
+        <button id="submit-btn" class="action-button"> قم بالتسجيل الآن</button>
+      </div>
+    </form>
+
+    <div class="card-info">
+      <p>
+        
+        بالتسجيل، فإنك توافق على
+        <a href="">شروط الاستخدام</a>
+      </p>
+    </div>
+  </div>
+</div>

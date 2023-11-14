@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="center-content">
+    <div class="alert alert-danger" *ngIf="errMessage">{{ errMessage }}</div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col first">
+          <mat-form-field appearance="fill">
+            <mat-label>الاسم</mat-label>
+            <input matInput type="text" formControlName="name" required>
+            <mat-error *ngIf="myForm.get('name')!.hasError('required')">الاسم مطلوب</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>رقم الغرفة</mat-label>
+            <input matInput type="number" formControlName="roomNumber" required>
+            <mat-error *ngIf="myForm.get('roomNumber')!.hasError('required')">رقم الغرفة مطلوب</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>تاريخ البدء</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="startDate">
+            <mat-hint>شهر/يوم/سنة</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>تاريخ الانتهاء</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="endDate">
+            <mat-hint>شهر/يوم/سنة</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>المدرب</mat-label>
+            <mat-select  [multiple]="true" (selectionChange)="onDataSelected($event)">
+              <mat-option *ngFor="let former of formers" [value]="former.former_id" >
+                {{ former.fullname }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col">
+            <img src="../../../assets/formation.jpg" alt="">
+              
+        </div>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit">إرسال</button>
+        <button mat-raised-button color="warn" routerLink="/cycle_list">إلغاء</button>
+      </div>
+
+  </form>
+  </div>
+</div>
