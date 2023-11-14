@@ -1,0 +1,22 @@
+mat-form-field {
+  margin-right: 5px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons button {
+    margin-right: 5px;
+}
+
+.alert{
+    text-align: center;
+}

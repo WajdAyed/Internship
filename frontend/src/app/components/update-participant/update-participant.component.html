@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>
+  <mat-icon>person</mat-icon>
+  تحديث المشترك</h2>
+<mat-dialog-content>
+  <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>الاسم الكامل</mat-label>
+    <input matInput formControlName="fullname" required>
+    <mat-error *ngIf="myForm.get('fullname')!.hasError('required')">الاسم الكامل مطلوب</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>الهاتف الأرضي</mat-label>
+    <input matInput type="number" formControlName="landLine" required>
+    <mat-error *ngIf="myForm.get('landLine')!.hasError('required')">الهاتف الأرضي مطلوب</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>الفاكس</mat-label>
+    <input matInput type="number" formControlName="fax" required>
+    <mat-error *ngIf="myForm.get('fax')!.hasError('required')">الفاكس مطلوب</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>الهاتف الخلوي</mat-label>
+    <input matInput type="number" formControlName="mobilePhone" required>
+    <mat-error *ngIf="myForm.get('mobilePhone')!.hasError('required')">الهاتف الخلوي مطلوب</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>البريد الإلكتروني</mat-label>
+    <input matInput type="email" formControlName="email" required>
+    <mat-error *ngIf="myForm.get('email')!.hasError('required')">البريد الإلكتروني مطلوب</mat-error>
+    <mat-error *ngIf="myForm.get('email')!.hasError('email')">صيغة البريد الإلكتروني غير صالحة</mat-error>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" type="submit">تقديم</button>
+    <button mat-raised-button color="warn" mat-dialog-close>إغلاق</button>
+  </div>
+
+</form>
+
+</mat-dialog-content>
